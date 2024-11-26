@@ -12,8 +12,8 @@ declare(strict_types=1);
 
 namespace Hyperf\Engine;
 
-use Hyperf\Engine\Contract\Socket\SocketFactoryInterface;
-use Hyperf\Engine\Socket\SocketFactory;
+use Hyperf\Engine\WebSocket\Client as EngineClient;
+use Hyperf\WebSocketClient\ClientInterface;
 
 class ConfigProvider
 {
@@ -21,8 +21,9 @@ class ConfigProvider
     {
         return [
             'dependencies' => [
-                SocketFactoryInterface::class => SocketFactory::class,
+                ClientInterface::class => EngineClient::class,
             ],
+            'priority' => 1,
         ];
     }
 }
